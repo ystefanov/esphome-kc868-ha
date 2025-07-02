@@ -9,7 +9,7 @@ DEPENDENCIES = ['kc868_ha']
 kc868_ha_ns = cg.esphome_ns.namespace('kc868_ha')
 BinarySensor = kc868_ha_ns.class_('KC868HaBinarySensor', cg.Component, binary_sensor.BinarySensor)
 
-CONFIG_SCHEMA = binary_sensor.BINARY_SENSOR_SCHEMA.extend({
+CONFIG_SCHEMA = binary_sensor.binary_sensor_schema(BinarySensor).extend({
     cv.GenerateID(): cv.declare_id(BinarySensor),
     cv.GenerateID(KC868_HA_ID): cv.use_id(Kc868HaComponent),
     cv.Optional("target_relay_controller_addr", default=1): cv.int_range(min=1, max=128),
